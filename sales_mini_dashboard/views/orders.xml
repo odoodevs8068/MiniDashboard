@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+
+    <record id="view_sale_order_tree_inherit" model="ir.ui.view">
+        <field name="name">Sale Orders Tree Inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">sale_list_dashboard</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="sales_order_view_search_inherit_sales" model="ir.ui.view">
+        <field name="name">sale.order.view.search.inherit.sales.mini.dashboard</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="arch" type="xml">
+            <filter name="to_invoice" position="after">
+                <filter string="Fully Invoiced" name="invoiced"
+                        domain="[('invoice_status', '=', 'invoiced')]"/>
+            </filter>
+        </field>
+    </record>
+
+
+
+</odoo>

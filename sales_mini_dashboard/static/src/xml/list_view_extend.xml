@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="sales_mini_dashboard.SaleDashboard">
+        <div class="o_purchase_dashboard container" style="height: 35%;">
+            <div class="row">
+                <div class="small-card" style="margin-left:30px">
+                    <div class="card-header">
+                        <span>Top Products</span>
+                    </div>
+                    <div>
+                        <table class="scroll-table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="values.top_products_by_value" t-as="value" t-key="value.product_id">
+                                    <tr>
+                                        <td>
+                                            <a id="view_product" t-attf-data-id="{{value.product_id}}" type="button">
+                                                <span t-esc="value.product_name"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <span t-esc="value.total_value"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="small-card" style="margin-left:25px">
+                    <div class="card-header">
+                        <span>Top Customers</span>
+                    </div>
+                    <div>
+                        <table class="scroll-table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="values.top_customers_by_value" t-as="value">
+                                    <tr>
+                                        <td>
+                                            <a id="view_customer" t-attf-data-id="{{value.customer_id}}" type="button">
+                                                <span t-esc="value.customer_name"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <span t-esc="value.total_value"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="small-card" style="margin-left:25px">
+                    <div class="card-header">
+                        <span>Top Regions</span>
+                    </div>
+                    <div>
+                        <table class="scroll-table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="values.top_regions_by_value" t-as="value">
+                                    <tr>
+                                        <td>
+                                            <span t-esc="value.region_name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="value.total_value"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-sm-6" style="margin-left:10px">
+                    <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <td class="o_text">
+                                        <div>All Orders</div>
+                                    </td>
+                                    <td class="o_main o_dashboard_action" title="All Orders" context='{"search_default_sales": true}'>
+                                        <a href="#">
+                                            <t t-esc="values['sale_orders']"/>
+                                            <br/>Sales Order</a>
+                                    </td>
+                                    <td class="o_main o_dashboard_action" title="All To Invoice" context='{"search_default_to_invoice": true}'>
+                                        <a href="#">
+                                            <t t-esc="values['to_invoice']"/>
+                                            <br/>To Invoice</a>
+                                    </td>
+                                    <td class="o_main o_dashboard_action" title="All Fully Invoiced" context='{"search_default_invoiced": true}'>
+                                        <a href="#">
+                                            <t t-esc="values['invoiced']"/>
+                                            <br/>Fully invoice</a>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="o_text">
+                                        <div>My Orders</div>
+                                    </td>
+                                    <td class="o_main o_dashboard_action" title="My Orders" context='{"search_default_sales": true, "search_default_my_sale_orders_filter": true}'>
+                                        <a href="#">
+                                            <t t-esc="values['my_sale_orders']"/>
+                                        </a>
+                                    </td>
+                                    <td class="o_main o_dashboard_action" title="My To Invoice" context='{"search_default_to_invoice": true, "search_default_my_sale_orders_filter": true}'>
+                                        <a href="#">
+                                            <t t-esc="values['my_to_invoice']"/>
+                                        </a>
+                                    </td>
+                                    <td class="o_main o_dashboard_action" title="My Fully Invoiced" context='{"search_default_invoiced": true, "search_default_my_sale_orders_filter": true}'>
+                                        <a href="#">
+                                            <t t-esc="values['my_invoiced']"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <br/>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <td class="o_text">Total Sale Amount
+                                </td>
+                                <td><span>
+                                    <t t-esc="values['total_sale_amount']"/>
+                                </span>
+                                </td>
+                                <td class="o_text"> Total Invoice Amount
+                                </td>
+                                <td><span>
+                                    <t t-esc="values['total_invoice_amount']"/>
+                                </span></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="o_text">Total Paid Amount</td>
+                                <td><span>
+                                    <t t-esc="values['total_paid_amount']"/>
+                                </span>
+                                </td>
+                                <td class="o_text">Balance Amount</td>
+                                <td><span>
+                                    <t t-esc="values['bl_amount']"/>
+                                </span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
