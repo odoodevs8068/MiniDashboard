@@ -12,17 +12,19 @@
                             <thead>
                             </thead>
                             <tbody>
-                                <t t-foreach="values.top_products_by_value" t-as="value" t-key="value.product_id">
-                                    <tr>
-                                        <td>
-                                            <a id="view_product" t-attf-data-id="{{value.product_id}}" type="button">
-                                                <span t-esc="value.product_name"/>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <span t-esc="value.total_value"/>
-                                        </td>
-                                    </tr>
+                                <t t-if="values.top_products_by_value">
+                                    <t t-foreach="values.top_products_by_value" t-as="value" t-key="value.product_id">
+                                        <tr>
+                                            <td>
+                                                <a id="view_product" t-attf-data-id="{{value.product_id}}" type="button">
+                                                    <span t-esc="value.product_name"/>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <span t-esc="value.total_value"/>
+                                            </td>
+                                        </tr>
+                                    </t>
                                 </t>
                             </tbody>
                         </table>
@@ -37,6 +39,7 @@
                             <thead>
                             </thead>
                             <tbody>
+                                <t t-if="values.top_customers_by_value">
                                 <t t-foreach="values.top_customers_by_value" t-as="value">
                                     <tr>
                                         <td>
@@ -48,7 +51,7 @@
                                             <span t-esc="value.total_value"/>
                                         </td>
                                     </tr>
-                                </t>
+                                </t></t>
                             </tbody>
                         </table>
                     </div>
@@ -62,6 +65,7 @@
                             <thead>
                             </thead>
                             <tbody>
+                                <t t-if="values.top_regions_by_value">
                                 <t t-foreach="values.top_regions_by_value" t-as="value">
                                     <tr>
                                         <td>
@@ -71,7 +75,7 @@
                                             <span t-esc="value.total_value"/>
                                         </td>
                                     </tr>
-                                </t>
+                                </t></t>
                             </tbody>
                         </table>
                     </div>
@@ -145,7 +149,9 @@
                             <tr>
                                 <td class="o_text">Total Paid Amount</td>
                                 <td><span>
-                                    <t t-esc="values['total_paid_amount']"/>
+                                    <t t-if="values['total_paid_amount'] != None">
+                                        <t t-esc="values['total_paid_amount']"/>
+                                    </t>
                                 </span>
                                 </td>
                                 <td class="o_text">Balance Amount</td>

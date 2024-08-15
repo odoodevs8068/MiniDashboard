@@ -151,7 +151,7 @@ class SaleOrderInherit(models.Model):
         self._cr.execute(partial_invoice_amount_sum)
         partial_amount = self.env.cr.fetchone()
 
-        total_paid_amount = invoice_amount[0] - partial_amount[0]
+        total_paid_amount = 0.0 if invoice_amount[0] == None else (invoice_amount[0] - partial_amount[0])
 
         result['total_paid_amount'] = format_amount(self.env, total_paid_amount or 0, self.env.company.currency_id)
         result['bl_amount'] = format_amount(self.env, partial_amount[0] or 0, self.env.company.currency_id)
