@@ -13,6 +13,7 @@
         'web.assets_backend': [
             # css
             "sales_mini_dashboard/static/src/css/sale_mini.css",
+            "sales_mini_dashboard/static/src/css/sale_mini.scss",
             # JS
             "sales_mini_dashboard/static/src/js/list_view_extend.js",
         ],

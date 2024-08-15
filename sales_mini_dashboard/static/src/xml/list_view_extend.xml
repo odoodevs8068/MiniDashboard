@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates>
     <t t-name="sales_mini_dashboard.SaleDashboard">
-        <div class="o_purchase_dashboard container" style="height: 35%;">
+        <div class="o_sale_mini_dashboard container" style="height: 35%;">
             <div class="row">
                 <div class="small-card" style="margin-left:30px">
                     <div class="card-header">
